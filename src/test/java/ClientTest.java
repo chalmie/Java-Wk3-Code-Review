@@ -35,7 +35,7 @@ public class ClientTest {
     Client savedClient = Client.all().get(0);
     assertEquals(newClient.getId(), savedClient.getId());
   }
-  
+
   // @Test
   // public void updateName_changesClientName() {
   //   Client testClient = new Client("Lardo");
@@ -53,12 +53,12 @@ public class ClientTest {
   //   assertEquals(0, Client.all().size());
   // }
   //
-  // @Test
-  // public void find_findsInstanceOfClientById() {
-  //   Client testClient = new Client("Bunk");
-  //   testClient.save();
-  //   assertEquals(Client.find(testClient.getId()), testClient);
-  // }
+  @Test
+  public void find_findsInstanceOfClientById() {
+    Client testClient = new Client("Mike", 2);
+    testClient.save();
+    assertEquals(Client.find(testClient.getId()), testClient);
+  }
   //
   // @Test
   // public void assigndStylist_assignsStylistToTheClient() {

@@ -52,4 +52,15 @@ public class Client {
       return con.createQuery(sql).executeAndFetch(Client.class);
     }
   }
+
+  public static Client find(int id) {
+    String sql = "SELECT * FROM clients WHERE id = :id";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Client.class);
+    }
+  }
+
+  
 }
