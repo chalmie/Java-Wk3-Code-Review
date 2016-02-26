@@ -14,11 +14,19 @@ public class StylistTest {
 
   @Test
   public void save_addsAllInstancesOfStylistToList() {
-    Stylist testStylist = new Stylist("Thai");
-    Stylist testStylist1 = new Stylist("BBQ");
+    Stylist testStylist = new Stylist("Jack");
+    Stylist testStylist1 = new Stylist("Jill");
     testStylist.save();
     testStylist1.save();
     assertEquals(2, Stylist.all().size());
+  }
+
+  @Test
+  public void find_findStylistInDatabase_true() {
+    Stylist newStylist = new Stylist("James");
+    newStylist.save();
+    Stylist savedStylist = Stylist.find(newStylist.getId());
+    assertTrue(newStylist.equals(savedStylist));
   }
 
 }
