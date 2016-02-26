@@ -55,6 +55,17 @@ public class AppTest extends FluentTest {
     submit("#clientBtn");
     assertThat(pageSource()).contains("Jill");
   }
+
+  @Test
+  public void ClientPageExists() {
+    goTo("http://localhost:4567/");
+    fill("#stylist").with("James");
+    submit("#stylistBtn");
+    fill("#name").with("Jill");
+    submit("#clientBtn");
+    click("a", withText("Jill"));
+    assertThat(pageSource()).contains("Jill");
+  }
   // @Test
   // public void restaurantWithCuisineIsCreated() {
   //   Stylist testStylist = new Stylist("James");
