@@ -9,8 +9,6 @@ public class Stylist {
     this.name = name;
   }
 
-  // Stylist.find(testRestaurant.getStylistId()).getType()
-
   public int getId() {
     return id;
   }
@@ -95,7 +93,5 @@ public class Stylist {
       String deleteStylistQuery = "DELETE FROM stylists *;";
       con.createQuery(deleteStylistQuery).executeUpdate();
     }
-  }
-
-  
+  }  
 }

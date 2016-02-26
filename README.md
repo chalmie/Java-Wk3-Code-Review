@@ -23,7 +23,8 @@ _Create, view, update and delete stylist and client information_
 * _Open a new tab in terminal and create the 'hair_salon' database:_
   * _psql_
   * _CREATE DATABASE hair_salon;_
-  * _psql hair_salon < hair_salon.sql_
+  * _CREATE TABLE stylists(id serial PRIMARY KEY, name varchar);_
+  * _CREATE TABLE clients(id serial PRIMARY KEY, name varchar, stylist_id int);_
 * _In the top level of the cloned directory, run the following command in your terminal:_
     * _$ gradle run_
 * _Open your web browser of choice to localhost:4567_

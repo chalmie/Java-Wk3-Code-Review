@@ -101,6 +101,4 @@ public class Client {
       con.createQuery(sql).executeUpdate();
     }
   }
-
-
 }

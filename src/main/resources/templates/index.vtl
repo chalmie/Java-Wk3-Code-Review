@@ -1,53 +1,32 @@
-<div class="jumbotron">
-  <h1>Restaurant List</h1>
-</div>
+<h1>The Hair Salon!</h1>
 
-<h3>Add a cuisine to categorize restaurants</h3>
-<form action="/cuisines" method="post">
-
+<form action='/' method='post'>
   <div class="form-group">
-    <label for="type">Cuisine Name:</label>
-    <input id="type" name="type" type="text" class="form-control">
+    <label for="stylist">Add a new stylist:</label>
+    <input id="stylist" name="stylist" class="form-control" type="text">
   </div>
-
-  <button type="submit" class="btn btn-success" id="cuisineBtn">Add Cuisine</button>
+  <button type="submit" class="btn">Submit</button>
 </form>
 
-<h3>Add a restaurant</h3>
-<form action="/restaurants" method="post">
-
+<form action='/restaurants' method='post'>
+  <p>Or, add a client to an existing stylist:</p>
   <div class="form-group">
-    <label for="name">Restaurant Name:</label>
-    <input id="name" name="name" type="text" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="cuisineId">Select a Cuisine (Optional)</label>
-    <select id='cuisineId' name='cuisineId' type='text'>
-    <option value="0" selected="selected">None</option>
-    #foreach($cuisine in $cuisines)
-      <option value="$cuisine.getId()" id ="$cuisine.getId()">$cuisine.getType()</option>
-    #end
+    <label for="name">Name:</label>
+    <input id="name" name="name" class="form-control" type="text">
+    <label for="stylist_id">Stylist</label>
+    <select id='stylist_id' name='stylist_id' type='text'>
+      #foreach($stylist in $stylists)
+        <option value="$stylist.getId()">$stylist.getName()</option>
+      #end
     </select>
   </div>
-
-  <div class="form-group">
-    <label for="description">Description</label>
-    <input id="description" name="description" type="text" class="form-control">
-  </div>
-
-  <button type="submit" class="btn btn-success" id="restaurantBtn">Add Restaurant</button>
+  <button type="submit" class="btn">Add 'em!</button>
 </form>
 
-<p>Click on a cuisine to see its restaurants:</p>
-  <ul>
-    #foreach($cuisine in $cuisines)
-      <li><a href="/cuisines/$cuisine.getId()">$cuisine.getType()</a></li>
-    #end
-    <li><a href="/cuisines/untyped">Restaurants without cuisines</a></li>
-  </ul>
 
-  <form action="/clear" method="post">
-
-    <button type="submit" class="btn btn-success">Clear all</button>
-  </form>
+#foreach($stylist in $stylists)
+  <h3>$stylist.getName()</h3>
+  #foreach($client in $stylist.getClients())
+    <a href="client/$client.getId()">$client.getName()</a>
+  #end
+#end
