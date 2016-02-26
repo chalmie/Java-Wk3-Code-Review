@@ -12,15 +12,15 @@ public class ClientTest {
       assertEquals(Client.all().size(), 0);
   }
 
-  // @Test
-  // public void save_addsAllInstancesOfClientToList() {
-  //   Client testClient = new Client("Lardo");
-  //   Client testClient1 = new Client("Grassa");
-  //   testClient.save();
-  //   testClient1.save();
-  //   assertEquals(2, Client.all().size());
-  // }
-  //
+  @Test
+  public void save_addsAllInstancesOfClientToList() {
+    Client testClient = new Client("Lardo");
+    Client testClient1 = new Client("Grassa");
+    testClient.save();
+    testClient1.save();
+    assertEquals(2, Client.all().size());
+  }
+
   // @Test
   // public void updateName_changesClientName() {
   //   Client testClient = new Client("Lardo");
