@@ -29,4 +29,11 @@ public class StylistTest {
     assertTrue(newStylist.equals(savedStylist));
   }
 
+  @Test
+  public void updateName_changesStylistName() {
+    Stylist testStylist = new Stylist("Johnny");
+    testStylist.save();
+    testStylist.updateName("Jamie");
+    assertEquals("Jamie", testStylist.getName());
+  }
 }
