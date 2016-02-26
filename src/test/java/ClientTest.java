@@ -51,6 +51,15 @@ public class ClientTest {
     assertEquals("Michael", testClient.getName());
   }
 
+  @Test
+  public void updateStylist_assignsStylistToTheClient() {
+    Client testClient = new Client("Mike", 1);
+    testClient.save();
+    Stylist testStylist = new Stylist("John");
+    testStylist.save();
+    testClient.updateStylist(testStylist.getId());
+    assertEquals(testClient.getStylistId(), testStylist.getId());
+  }
 
   @Test
   public void delete_removesClientFromDatabase() {
@@ -70,13 +79,5 @@ public class ClientTest {
     assertEquals(0, Client.all().size());
   }
 
-  @Test
-  public void assignStylist_assignsStylistToTheClient() {
-    Client testClient = new Client("Mike", 1);
-    testClient.save();
-    Stylist testStylist = new Stylist("John");
-    testStylist.save();
-    testClient.updateStylist(testStylist.getId());
-    assertEquals(testClient.getStylistId(), testStylist.getId());
-  }
+
 }
