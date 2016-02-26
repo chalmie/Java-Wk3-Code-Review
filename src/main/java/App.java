@@ -116,12 +116,5 @@ public class App {
       response.redirect("/");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
-    /******************************************************
-    STUDENTS:
-    TODO: Create page to display information about the selected client
-    TODO: Create page to display clients by stylist type
-    *******************************************************/
-
   }
 }
