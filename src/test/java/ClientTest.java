@@ -45,14 +45,14 @@ public class ClientTest {
   // }
 
 
-  // @Test
-  // public void delete_removesClientFromDatabase() {
-  //   Client testClient = new Client("Lardo");
-  //   testClient.save();
-  //   testClient.delete();
-  //   assertEquals(0, Client.all().size());
-  // }
-  //
+  @Test
+  public void delete_removesClientFromDatabase() {
+    Client testClient = new Client("Mike", 3);
+    testClient.save();
+    testClient.delete();
+    assertEquals(0, Client.all().size());
+  }
+
   @Test
   public void find_findsInstanceOfClientById() {
     Client testClient = new Client("Mike", 2);
