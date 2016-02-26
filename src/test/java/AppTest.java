@@ -30,18 +30,27 @@ public class AppTest extends FluentTest {
   }
 
   @Test
-  public void cuisineIsCreated() {
+  public void StylistIsCreated() {
     goTo("http://localhost:4567/");
     fill("#stylist").with("James");
     submit("#stylistBtn");
     assertThat(pageSource()).contains("James");
   }
-  //
+
+  @Test
+  public void StylistPageExists() {
+    goTo("http://localhost:4567/");
+    fill("#stylist").with("James");
+    submit("#stylistBtn");
+    click("a", withText("James"));
+    assertThat(pageSource()).contains("James");
+  }
+
   // @Test
   // public void restaurantWithCuisineIsCreated() {
-  //   Cuisine testCuisine = new Cuisine("Thai");
-  //   testCuisine.save();
-  //   String clickstring = "#" + testCuisine.getId();
+  //   Stylist testStylist = new Stylist("James");
+  //   testStylist.save();
+  //   String clickstring = "#" + testStylist.getId();
   //   goTo("http://localhost:4567/");
   //   fill("#name").with("Pok Pok");
   //   click(clickstring);
