@@ -44,4 +44,19 @@ public class StylistTest {
     testStylist.delete();
     assertEquals(0, Stylist.all().size());
   }
+
+  @Test
+  public void getClients_getAllClientsWithinAStylist() {
+    Stylist testStylist = new Stylist("Jeb");
+    testStylist.save();
+    Client testClient = new Client("Jared", testStylist.getId());
+    Client testClient1 = new Client("Jim", testStylist.getId());
+    Client testClient2 = new Client("Janet", 2);
+    testClient.save();
+    testClient1.save();
+    testClient2.save();
+    testClient.updateStylist(testStylist.getId());
+    testClient1.updateStylist(testStylist.getId());
+    assertEquals(2,testStylist.getClients().size());
+  }
 }

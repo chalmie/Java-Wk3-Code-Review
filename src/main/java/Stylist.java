@@ -19,13 +19,6 @@ public class Stylist {
     return name;
   }
 
-  public static List<Stylist> all() {
-    String sql = "SELECT id, name FROM stylists";
-    try (Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(Stylist.class);
-    }
-  }
-
   @Override
   public boolean equals(Object otherStylist){
     if (!(otherStylist instanceof Stylist)) {
@@ -34,6 +27,25 @@ public class Stylist {
       Stylist newStylist = (Stylist) otherStylist;
       return this.getName().equals(newStylist.getName()) &&
         this.getId() == newStylist.getId();
+    }
+  }
+
+  //CREATE
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+    String sql = "INSERT INTO stylists(name) VALUES (:name)";
+    this.id = (int) con.createQuery(sql, true)
+      .addParameter("name", name)
+      .executeUpdate()
+      .getKey();
+    }
+  }
+
+  //READ
+  public static List<Stylist> all() {
+    String sql = "SELECT id, name FROM stylists";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Stylist.class);
     }
   }
 
@@ -46,14 +58,13 @@ public class Stylist {
     }
   }
 
-  //CREATE
-  public void save() {
-    try (Connection con = DB.sql2o.open()) {
-    String sql = "INSERT INTO stylists(name) VALUES (:name)";
-    this.id = (int) con.createQuery(sql, true)
-      .addParameter("name", name)
-      .executeUpdate()
-      .getKey();
+  public List<Client> getClients() {
+
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylist_id = :id";
+      return con.createQuery(sql)
+        .addParameter("id", this.id)
+        .executeAndFetch(Client.class);
     }
   }
 
@@ -69,6 +80,7 @@ public class Stylist {
     }
   }
 
+  //DELETE
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM stylists WHERE id = :id";
