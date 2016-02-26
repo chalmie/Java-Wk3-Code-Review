@@ -23,19 +23,19 @@ public class AppTest extends FluentTest {
   @ClassRule
   public static ServerRule server = new ServerRule();
 
-  // @Test
-  // public void rootTest() {
-  //   goTo("http://localhost:4567/");
-  //   assertThat(pageSource()).contains("Add a cuisine to categorize restaurants");
-  // }
-  //
-  // @Test
-  // public void cuisineIsCreated() {
-  //   goTo("http://localhost:4567/");
-  //   fill("#type").with("Thai");
-  //   submit("#cuisineBtn");
-  //   assertThat(pageSource()).contains("Thai");
-  // }
+  @Test
+  public void rootTest() {
+    goTo("http://localhost:4567/");
+    assertThat(pageSource()).contains("The Hair Salon");
+  }
+
+  @Test
+  public void cuisineIsCreated() {
+    goTo("http://localhost:4567/");
+    fill("#stylist").with("James");
+    submit("#stylistBtn");
+    assertThat(pageSource()).contains("James");
+  }
   //
   // @Test
   // public void restaurantWithCuisineIsCreated() {
