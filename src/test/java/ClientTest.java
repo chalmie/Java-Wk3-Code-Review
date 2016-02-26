@@ -14,11 +14,18 @@ public class ClientTest {
 
   @Test
   public void save_addsAllInstancesOfClientToList() {
-    Client testClient = new Client("Lardo");
-    Client testClient1 = new Client("Grassa");
+    Client testClient = new Client("Lardo", 1);
+    Client testClient1 = new Client("Grassa", 2);
     testClient.save();
     testClient1.save();
     assertEquals(2, Client.all().size());
+  }
+
+  @Test
+  public void equals_returnsTrueIfSame(){
+    Client firstClient = new Client("Mike", 1);
+    Client secondClient = new Client("Mike", 1);
+    assertTrue(firstClient.equals(secondClient));
   }
 
   // @Test
@@ -28,8 +35,8 @@ public class ClientTest {
   //   testClient.updateName("Bunk");
   //   assertEquals("Bunk", testClient.getName());
   // }
-  //
-  //
+
+
   // @Test
   // public void delete_removesClientFromDatabase() {
   //   Client testClient = new Client("Lardo");
