@@ -1,4 +1,4 @@
-<h1>$restaurant.getName()</h1>
+<h1>$client.getName()</h1>
 
 
 <div class="container">
@@ -15,7 +15,7 @@
       <label for="stylist_id">Update stylist</label>
       <select id='stylist_id' name='stylist_id' type='text'>
         #foreach($stylist in $stylists)
-          <option value="$stylist.getId()">$stylist.getType()</option>
+          <option value="$stylist.getId()">$stylist.getName()</option>
         #end
       </select>
     </div>

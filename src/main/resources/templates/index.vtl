@@ -8,7 +8,7 @@
   <button type="submit" class="btn">Submit</button>
 </form>
 
-<form action='/restaurants' method='post'>
+<form action='/clients' method='post'>
   <p>Or, add a client to an existing stylist:</p>
   <div class="form-group">
     <label for="name">Name:</label>
@@ -25,8 +25,10 @@
 
 
 #foreach($stylist in $stylists)
-  <h3>$stylist.getName()</h3>
-  #foreach($client in $stylist.getClients())
-    <a href="client/$client.getId()">$client.getName()</a>
-  #end
+  <h3><a href="stylist/$stylist.getId()">$stylist.getName()</a></h3>
+  <ul>
+    #foreach($client in $stylist.getClients())
+      <li><a href="client/$client.getId()">$client.getName()</a></li>
+    #end
+  </ul>
 #end

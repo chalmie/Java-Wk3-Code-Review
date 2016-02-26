@@ -1,0 +1,21 @@
+<h1>$stylist.getName()</h1>
+
+
+<div class="container">
+  <form action='/stylist/$stylist.getId()/updateName' method='post' class="form-inline">
+    <div class="form-group">
+      <label for="name">Update Name:</label>
+      <input id="name" name="name" class="form-control" type="text">
+    </div>
+    <button type="submit" class="btn">Update!</button>
+  </form>
+  <br>
+</div>
+<br>
+
+<form action='/stylist/$stylist.getId()/delete' method='post'>
+
+  <button type="submit" class="btn btn-warning">Delete This Stylist</button>
+</form>
+
+<a href="/" class="btn btn-info" role="button">Return to Main Page</a>
