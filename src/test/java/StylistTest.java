@@ -46,6 +46,16 @@ public class StylistTest {
   }
 
   @Test
+  public void deleteAll_removesStylistsFromDatabase() {
+    Stylist testStylist = new Stylist("Jen");
+    Stylist testStylist1 = new Stylist("Jenny");
+    testStylist.save();
+    testStylist1.save();
+    testStylist.deleteAll();
+    assertEquals(0, Stylist.all().size());
+  }
+
+  @Test
   public void getClients_getAllClientsWithinAStylist() {
     Stylist testStylist = new Stylist("Jeb");
     testStylist.save();
