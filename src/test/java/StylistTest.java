@@ -12,5 +12,13 @@ public class StylistTest {
       assertEquals(Stylist.all().size(), 0);
   }
 
+  @Test
+  public void save_addsAllInstancesOfStylistToList() {
+    Stylist testStylist = new Stylist("Thai");
+    Stylist testStylist1 = new Stylist("BBQ");
+    testStylist.save();
+    testStylist1.save();
+    assertEquals(2, Stylist.all().size());
+  }
 
 }
