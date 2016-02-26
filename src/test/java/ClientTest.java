@@ -59,14 +59,14 @@ public class ClientTest {
     testClient.save();
     assertEquals(Client.find(testClient.getId()), testClient);
   }
-  //
-  // @Test
-  // public void assigndStylist_assignsStylistToTheClient() {
-  //   Client testClient = new Client("Bunk");
-  //   testClient.save();
-  //   Stylist testStylist = new Stylist("Sandwiches");
-  //   testStylist.save();
-  //   testClient.assignStylist(testStylist.getId());
-  //   assertEquals(testClient.getStylistId(), testStylist.getId());
-  // }
+
+  @Test
+  public void assigndStylist_assignsStylistToTheClient() {
+    Client testClient = new Client("Mike", 1);
+    testClient.save();
+    Stylist testStylist = new Stylist("John");
+    testStylist.save();
+    testClient.assignStylist(testStylist.getId());
+    assertEquals(testClient.getStylistId(), testStylist.getId());
+  }
 }
