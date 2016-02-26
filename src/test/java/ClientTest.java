@@ -28,6 +28,14 @@ public class ClientTest {
     assertTrue(firstClient.equals(secondClient));
   }
 
+  @Test
+  public void save_assignsIdToObject() {
+    Client newClient = new Client("Mike", 1);
+    newClient.save();
+    Client savedClient = Client.all().get(0);
+    assertEquals(newClient.getId(), savedClient.getId());
+  }
+  
   // @Test
   // public void updateName_changesClientName() {
   //   Client testClient = new Client("Lardo");
