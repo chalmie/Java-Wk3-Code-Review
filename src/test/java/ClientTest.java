@@ -36,6 +36,13 @@ public class ClientTest {
     assertEquals(newClient.getId(), savedClient.getId());
   }
 
+  @Test
+  public void find_findsInstanceOfClientById() {
+    Client testClient = new Client("Mike", 2);
+    testClient.save();
+    assertEquals(Client.find(testClient.getId()), testClient);
+  }
+
   // @Test
   // public void updateName_changesClientName() {
   //   Client testClient = new Client("Lardo");
@@ -54,10 +61,13 @@ public class ClientTest {
   }
 
   @Test
-  public void find_findsInstanceOfClientById() {
-    Client testClient = new Client("Mike", 2);
-    testClient.save();
-    assertEquals(Client.find(testClient.getId()), testClient);
+  public void deleteAll_removesClientsFromDatabase() {
+    Client testClientA = new Client("Mike", 3);
+    Client testClientB = new Client("Jill", 1);
+    testClientA.save();
+    testClientA.save();
+    Client.deleteAll();
+    assertEquals(0, Client.all().size());
   }
 
   @Test
